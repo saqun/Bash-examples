@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title> Linux Administration with Bash </title>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 5px;
+                padding-left: 20px;
+            }
+            .keyword {
+                font-family: "Times New Roman", Times, serif;
+                font-style:normal;
+                font-size: 1em;
+                font-weight: bold; 
+                color:red;   
+            }
+
+        </style> 
+    </head>
+    <body>
+        <div mame="if-stm">
+            <h1>If conditional</h1>
+            <table style="width:100%">
+                <tr>
+                    <td>
+                        <span class="keyword"> if </span> [condition] <br>
+                        <span class="keyword">then  </span> <br>
+                        &nbsp&nbsp&nbsp[code] <br>
+                        <span class="keyword">  fi </span>   <br>
+                        <br>
+
+                        <span class="keyword"> if </span> [condition] <br>
+                        <span class="keyword">then  </span> <br>
+                        &nbsp&nbsp&nbsp[code] <br>
+                        <span class="keyword"> elif </span> [condition] <br>
+                        <span class="keyword">then  </span> <br>
+                        &nbsp&nbsp&nbsp[code] <br>
+                        <span class="keyword"> else </span> [condition] <br>
+                        &nbsp&nbsp&nbsp[code] <br>
+                       <span class="keyword">  fi </span>   <br>
+                    
+                    <td>
+                        <span class="keyword"> if </span> [condition] <span class="keyword">; then </span><br>
+                        &nbsp&nbsp&nbsp[code] <br>
+                        <span class="keyword">  fi </span>   <br>
+                        <br>
+                         <span class="keyword"> if </span> [condition] <span class="keyword">; then </span><br>
+                         &nbsp&nbsp&nbsp[code] <br>
+                        <span class="keyword"> elif </span> [condition] <span class="keyword">; then </span><br>
+                        &nbsp&nbsp&nbsp[code] <br>
+                        <span class="keyword"> else </span><br>
+                        &nbsp&nbsp&nbsp[code] <br>
+                        <span class="keyword">  fi </span>   <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        if grep root /etc/passwd; then <br> &nbsp&nbsp&nbsp [code] <br> else <br> &nbsp&nbsp&nbsp[code] <br> fi <br>
+                    </td>
+                    <td>
+                            if ! grep root /etc/passwd; then <br> &nbsp&nbsp&nbsp [code] <br> else <br> &nbsp&nbsp&nbsp[code] <br> fi <br>
+                        </td>
+                   </tr>
+            </table>
+        </div>
+        <div name="case-stm">
+            <h1> Case Statement</h1>
+            <table>
+                <tr>
+                    <td>
+                        caes $AGE in <br>
+                        &nbsp&nbsp&nbsp[0-9]) echo "You are young";; <br>
+                        &nbsp&nbsp&nbsp[10-19]) echo "You are not that young";; <br>
+                        &nbsp&nbsp&nbsp[2-9][0-9]) echo "You are an adult";; <br>
+                        &nbsp&nbsp&nbsp*) echo "Age $AGE";; <br>
+                        
+                        esac <br>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div name="comparison opartors">
+            <h1> Comparison Operators</h1>
+            <table>
+                <tr>
+                    <th> <h5> Numeric comparator</h5></th>
+                    <th> <h5> Non Numeric comparator</h5> </th>
+                </tr> <tr>
+                    <td>
+                        if [[ 1 -lt 5 ]] <br>
+                        if [[ 1 -gt 5 ]] <br>
+                        if [[ 1 -eq 5 ]] <br>
+                        if [[ 1 -le 5 ]] <br>
+                        if [[ 1 -ge 5 ]] <br>
+                    </td> <td>
+                        if [[ 1 > 5 ]] <br>
+                        if [[ 1 < 5 ]] <br>
+                        if [[ 1 = 5 ]] <br>
+                        if [[ dog = cat ]] <br>
+                        if [[ dog != cat ]] <br> <br>
+                        if [[ -z $VAR ]]   ; # Zero length?  <br>
+                        if [[ -n $VAR ]]   ; # Not emtpy?  <br>
+
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div name="Math" style="width:100%">
+            <h1>Math expression</h1>
+            <table style="width:100%">
+                <tr> <td>
+                    let a="17+18" <br>
+                    a=$(express 17 + 28) <br>
+                    a=$[17+18] <br>
+                    ((a=17+18)) <br>
+                    a=$((17+18)) <br>
+                    </td>
+                    <td>
+                        #!/bin/bash <br> <br>
+                        if (($1 > $2)) ; then <br>
+                        &nbsp&nbsp&nbsp echo "$1 &gt; $2" <br>
+                        else <br>
+                        &nbsp&nbsp&nbsp echo "$1 &lt;= $2" <br>
+                        fi <br> <br>
+
+                        sum=$(($1+$2)) <br>
+                        if [[&nbsp "$sum" -ge 10 ]]&nbsp ; then <br>
+                        &nbsp&nbsp&nbsp echo "Sum is greater or equal to 10" <br>
+                        fi <br>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div name="file-condition">
+            <h1>File Conditions</h1>
+            <table style="width:100%">
+                <tr> <td>
+                <ul>
+                    <li> -e if file exists</li>
+                    <li> -f if a file exists and is a file</li>
+                    <li> -d if a file exists and is a directory</li>
+                    <li> -b if a file exists and is a block device</li>
+                    <li> -p if a file exists and is a pipe</li>
+                    <li> -S if a file exists and is a socket</li>
+                    <li> -L if a file exists and is a symbolic link</li>
+                    <li> -g if a file exists and has the SGID bit set</li>
+                    <li> -u if a file exists and has the SUID bit set</li>
+                </ul>
+            </td> <td>
+                <ul> 
+                    <li> -r if a file exists and is readable by the current user</li>
+                    <li> -w if a file exists and is writable by the current user</li>
+                    <li> -x if a file exists and is executable by the current user</li>
+                    <li> -s if a file exists and has a size larger than 0 bytes</li>
+                    <li> -nt if a file newer than another</li>
+                    <li> -ot if a file older than another</li>
+                    <li> -ef if two files has the same inode numbers</li>
+                </ul>
+            </td> </tr>
+            </table>
+        </div>
+        <div name="ForLoop">
+            <h1> For Loop statement</h1>
+            <table style="width:100%">
+                <tr>
+                    <th> Static List</th>
+                    <th> Dynamic List Using seq</th>
+                    <th> Dynamic List using Parameter Expansion</th> 
+                    <th> Dynamic List using Cmd Substitution</th> 
+                    <th> List from an Array</th> 
+                </tr>
+                <tr> <td>
+                    for item in 1 2 3 4 5 ; do <br>
+                    &nbsp&nbsp&nbsp echo $item <br>
+                    done <br>
+                </td>
+                <td>
+                        for item in $(seq 1 10) ; do <br>
+                        &nbsp&nbsp&nbsp echo $item <br>
+                        done <br>                   
+                </td>
+                <td>
+                        for item in {1..10} ; do <br>
+                        &nbsp&nbsp&nbsp echo $item <br>
+                        done <br>                   
+                </td>                
+                <td>
+                    # reset IFS : internal field separator <br>
+                    OLDIFS="$IFS"<br>
+                    IFS=$'\n'<br>
+                        for item in $(find /etc) ; do <br>
+                        &nbsp&nbsp&nbsp echo $item <br>
+                        done <br>
+                    IFS="$OLDIFS"   <br>                
+                </td>               
+                <td>
+                        # reset IFS : internal field separator <br>
+                        OLDIFS="$IFS"<br>
+                        IFS=$'\n'<br>
+                            for item in ${array[@]} ; do <br>
+                            &nbsp&nbsp&nbsp echo $item <br>
+                            done <br>
+                        IFS="$OLDIFS"   <br>                
+                    </td>      
+                </tr> <tr>
+                        <td>
+                            array=(one two three) <br>
+                                 for i in $(seq 0 ${#array[@]}) ; do <br>
+                                        &nbsp&nbsp&nbsp echo "${array[$i]}"" <br>
+                                    done <br>
+                        </td>      
+                        <td>
+                                array=(one two three) <br>
+                                     for i in ${0..$((${#array[@]} -1))} ; do <br>
+                                            &nbsp&nbsp&nbsp echo "${array[$i]}"" <br>
+                                        done <br>
+                            </td>      
+                                                           
+                 </tr>
+            </table>
+        </div>
+        <div name="whileloop">
+            <h1> While Loop Statement</h1>
+            <table style="width:100%">
+                <tr> <td>
+                    i='0' <br>
+                    while [ $i -lt 4 ] ; do <br> 
+                        &nbsp&nbsp&nbsp echo "$i is less than 4" <br >
+                        &nbsp&nbsp&nbsp ((i++)) <br>
+                    done <br> 
+                </td>
+                <td>
+                    while IFS= read -r LINE; do <br>
+                    &nbsp&nbsp&nbsp echo "Line=$LINE" <br>
+                    done &lt; "$1" <br>
+                </td>
+            </tr></table>
+        </div>
+        <div name="Examples">
+            <h1> Examples</h1>
+            <table style="width:100%"><tr>
+                <th>Monitor User Space Usage</th>
+                <th>Rearrange the strings</th>
+                <th>Example</th>
+            </tr>
+            <tr><td>
+            #!/bin/bash <br> <br>
+            LIMIT='100000'<br>
+            MDIR='/home'<br>
+            MAILTO='root@localnet.com'<br>
+            SUBJECT="$MDIR disk usage"<br>
+            if ! which mailx &> /dev/null ; do <br>
+            &nbsp&nbsp&nbsp echo "Mailx not installed" <br>
+            done <br> <br>
+            cd "$MDIR" <br>
+            for user in * ; do <br>
+            &nbsp&nbsp&nbsp SIZE=$(du -s $MDIR | awk '{print $1}') <br>
+            &nbsp&nbsp&nbsp if [[ $SIZE -ge $LIMIT ]] ; then <br>
+            &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp echo du -sh $user | mailx -s $SUBJECT $MAILTO <br>
+            &nbsp&nbsp&nbsp fi <br>
+            done <br>
+        </td><td>
+            Input file <br>
+            &nbsp&nbsp    name1@gmail.com|com.emailclient.account<br>
+            &nbsp&nbsp    name2@msn.com|com.socialsite.auth.account<br><br>
+                
+            To achieve:<br>
+            &nbsp&nbsp    Emailclient name1@gmail.com<br>
+            &nbsp&nbsp    Socialsite name2@msn.com<br> <br>
+            awk -F'|' '{split($2,a,".");print a[2]" "$1}' file <br> <br>
+            cat file | awk 'BEGIN{FS="|"} {split($2,a,".");print a[2]" "$1}' <br>
+        </td><td>
+                #!/bin/bash<br> <br>
+                while IFS=: read -r user pass uid gid gecos home shell; do <br>
+                &nbsp&nbsp&nbsp echo "$user $shell" <br>
+                done &lt; "$1" <br>
+
+        </td>
+        </tr>
+        <tr><td>
+                #!/bin/bash<br> <br>
+                declare -a passarray <br>
+                mapfile passarray < "$1" <br>
+                echo ${passarray} ;#==passaray[0]<br> 
+                echo ${passarray[1]} <br>
+                echo ${passarray[@]}<br> 
+        </td>
+        <td>
+                #!/bin/bash<br> <br>
+                #check if pipe to this script <br>
+                if [[ -p /dev/stdin ]] ; do <br>
+                &nbsp&nbsp&nbsp   while IFS= read -r LINE; do <br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp pipearray+=($LINE) <br>
+                &nbsp&nbsp&nbsp    done <br>
+                fi <br>
+                echo ${pipearray[@]} <br>
+        </td>
+        <td>
+            #!/bin/bash<br> <br>
+            while getopts ":a" opt; do <br>
+            case $opt in  <br>
+            &nbsp&nbsp&nbsp a) echo "-a option passed" >&2;; <br>
+            &nbsp&nbsp&nbsp \?) echo "Invalid option -opt";; <br>
+                esac <br> <br>
+
+                #!/bin/bash<br> <br>
+                while getopts ":a:" opt; do <br>
+                case $opt in  <br>
+                &nbsp&nbsp&nbsp a) echo "-a option passed with $OPTARG" >&2;; <br>
+                &nbsp&nbsp&nbsp :) echo "Option -$opt req an argument";; <br>
+                &nbsp&nbsp&nbsp \?) echo "Invalid option -opt";; <br>
+                    esac <br> <br>
+                shift $((OPTIND - 1)); $ remove the arg scanned<br>
+                </td>
+    </tr>
+ 
+        </table>
+
+
+
+
+        </div>
+    </body>
+</html>
